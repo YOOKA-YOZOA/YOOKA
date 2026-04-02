@@ -112,6 +112,34 @@
             .text-overlay-block { padding: 25px; }
             .story-section { padding: 25px; }
         }
+        /* 預設隱藏日文 */
+.lang-ja {
+    display: none;
+}
+
+/* 當 body 有 .jp-mode 這個類別時，隱藏中文，顯示日文 */
+body.jp-mode .lang-zh {
+    display: none;
+}
+body.jp-mode .lang-ja {
+    display: block; /* 讓日文段落顯示出來 */
+}
+
+/* 語言切換按鈕的樣式 (可依喜好微調) */
+.lang-switch-btn {
+    background: transparent;
+    color: #ffff00;
+    border: 1px solid #ffff00;
+    padding: 8px 15px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin: 10px;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.lang-switch-btn:hover {
+    background: rgba(255, 255, 0, 0.2);
+}
     </style>
 </head>
 <body>
@@ -126,13 +154,20 @@
          &#9776;
     </div>
 
-    <div id="fake-menu" style="display: none; position: absolute; top: 70px; right: 20px; width: 250px; background: #1a1a1a; border: 1px solid #d4af37; padding: 20px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); text-align: center; z-index: 2000;">
-        <p style="color: #fff; font-size: 0.9rem; margin: 0; line-height: 1.6;">
-            其實我只是想專業點才有這個選單的 (〃▽〃)<br>
-            <small style="color: #666;">（目前還沒有功能喔！）</small>
-        </p>
-        <button onclick="toggleMenu()" style="margin-top: 15px; background: #d4af37; border: none; color: #000; padding: 5px 15px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: bold;">關閉</button>
-    </div>
+   <div id="fake-menu" style="display: none; position: absolute; top: 70px; right: 20px; width: 250px; background: #1a1a1a; border: 1px solid #d4af37; padding: 20px; border-radius: 8px; box-shadow: 0 10px 30px rgba(0,0,0,0.8); text-align: center; z-index: 2000;">
+    
+    <p style="color: #fff; font-size: 0.9rem; margin: 0; line-height: 1.6;">
+        其實我只是想專業點才有這個選單的 (〃▽〃)
+    </p>
+
+    <hr style="border: 0; border-top: 1px solid #333; margin: 15px 0;">
+
+    <button class="lang-switch-btn" onclick="toggleLanguage()" style="width: 100%; background: transparent; border: 1px solid #ffff00; color: #ffff00; padding: 8px; border-radius: 4px; cursor: pointer; font-size: 0.85rem; font-weight: bold; margin-bottom: 15px; transition: 0.3s;">
+        切換語言 / 言語切換 (JP)
+    </button>
+
+    <button onclick="toggleMenu()" style="background: #d4af37; border: none; color: #000; padding: 5px 15px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: bold;">關閉</button>
+</div>
 </header>
 
       <main>
@@ -154,9 +189,14 @@
         <hr class="separator">
 
         <div class="story-section">
-            <div class="section-title">第一章</div>
-            <p>水晶吊燈高懸於大廳，燭光在金色雕花天花板間折射出千百個光斑，猶如繁星墜落凡間。舞池中，少年少女的禮服在光影下閃耀，珍珠、絲絨、緞帶交錯，音樂如流水般傾瀉。樂師們正全神貫注拉奏著小提琴，連每一次弓弦觸碰弦線的聲音都被精心放大，像是為了襯托這座莊園的富麗堂皇。
-                
+             <div class="section-title">
+        <span class="lang-zh">第一章</span>
+        <span class="lang-ja">第一章</span>
+    </div>
+
+    <p> <span class="lang-zh">水晶吊燈高懸於大廳，燭光在金色雕花天花板間折射出千百個光斑。</span>
+        <span class="lang-ja">大広間にはクリスタルシャンデリアが高々と吊るされ、金の彫刻が施された天井には、ろうそくの光が数え切れないほどの光の粒となって反射している。</span>
+
 <p><span lang="ja" title="お嬢様">大小姐</span>慵懶地靠坐在高背長椅上，銀灰色的髮絲在燭光下泛著冷冽光澤。髮髻高高束起，卻特意留了幾縷鬆散的髮絲垂落，襯得她眉眼間的淡漠神情更添一份隨性。金絲髮釵靜靜插在髮間，藍寶石墜子隨著她微微轉頭，映出一點點藍光。耳邊的長垂銀飾隨姿勢輕晃，如同月色落入水波。
     
 <p>一襲拼接的異國華服覆在她身上：上身的金線織布繡著細密幾何紋樣，光影間宛若金河流動；腰間的黑色絲緞緊貼身形，勾勒出矜貴卻慵懶的姿態；層層疊起的薄紗裙襬流轉著淡紫、深藍與黑金的漸層，微微散落在椅腳邊，像夜空靜靜墜落。冰藍色的披肩隨意搭在肩頭，將她的冷意襯得更為明顯。
@@ -355,14 +395,18 @@
 </div>
     
     <script>
-    function toggleMenu() {
-        var menu = document.getElementById("fake-menu");
-        if (menu.style.display === "none" || menu.style.display === "") {
-            menu.style.display = "block";
-        } else {
-            menu.style.display = "none";
-        }
+   function toggleLanguage() {
+    // 讓 body 在 "jp-mode" 和 "正常模式" 之間切換
+    document.body.classList.toggle('jp-mode');
+    
+    // 同時更改按鈕上的文字提示
+    const btn = document.querySelector('.lang-switch-btn');
+    if (document.body.classList.contains('jp-mode')) {
+        btn.innerHTML = "切換語言 / 言語切換 (ZH)";
+    } else {
+        btn.innerHTML = "切換語言 / 言語切換 (JP)";
     }
+}
 </script>
     
 </body>
