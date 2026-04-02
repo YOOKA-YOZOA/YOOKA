@@ -3,157 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>給那位歌手的信箋 - 故事集</title>
+    <title>YOOKA - 嗨，歡迎您的到來</title>
     <style>
-        :root {
-            --primary-color: #2c3e50;
-            --accent-color: #d4af37; /* 金色，代表星光或舞台 */
-            --bg-color: #fcfaf7;    /* 略帶紙質感的米白色 */
-            --text-color: #333;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
+        /* 基礎樣式：設定為黑底白字 */
         body {
-            font-family: "PingFang TC", "Microsoft JhengHei", serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.8;
-            overflow-x: hidden;
-        }
-
-        /* 頂部視覺區 */
-        header {
-            height: 60vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1514525253361-b83a85f08a83?auto=format&fit=crop&q=80&w=1920') center/cover;
+            background-color: #000000;
+            color: #ffffff;
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            margin: 0;
+            padding: 0;
             display: flex;
             flex-direction: column;
-            justify-content: center;
             align-items: center;
-            color: white;
-            text-align: center;
-            padding: 0 20px;
+            min-height: 100vh;
         }
 
-        header h1 {
-            font-size: 2.5rem;
-            letter-spacing: 5px;
-            margin-bottom: 10px;
-            font-weight: 300;
+        /* 導覽列：模擬截圖上方的簡約風格 */
+        header {
+            width: 100%;
+            max-width: 1200px;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-sizing: border-box;
         }
 
-        header p {
-            font-style: italic;
-            opacity: 0.8;
+        .logo {
+            font-size: 1.2rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .menu-icon {
+            font-size: 1.5rem;
+            cursor: pointer;
         }
 
         /* 主要內容區 */
         main {
+            width: 100%;
             max-width: 800px;
-            margin: -50px auto 50px;
-            background: white;
-            padding: 60px 40px;
-            border-radius: 4px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            padding: 40px 20px;
+            text-align: center;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .story-section {
-            margin-bottom: 40px;
-            white-space: pre-wrap; /* 保留換行，像讀詩一樣 */
-        }
-
-        .story-section h2 {
-            color: var(--accent-color);
-            font-size: 1.5rem;
+        /* 標題與段落文字設定 */
+        h1 {
+            font-size: 2rem;
+            font-weight: normal;
             margin-bottom: 20px;
-            border-left: 3px solid var(--accent-color);
-            padding-left: 15px;
-        }
-
-        .quote {
-            font-size: 1.2rem;
-            color: #666;
-            text-align: center;
-            margin: 40px 0;
-            padding: 20px;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-            font-style: italic;
-        }
-
-        /* 互動按鈕 */
-        .btn-container {
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 12px 30px;
-            border: 1px solid var(--accent-color);
-            color: var(--accent-color);
-            text-decoration: none;
-            transition: all 0.3s;
             letter-spacing: 2px;
         }
 
-        .btn:hover {
-            background: var(--accent-color);
-            color: white;
+        p {
+            font-size: 1rem;
+            line-height: 1.8;
+            margin: 10px 0;
+            color: rgba(255, 255, 255, 0.8); /* 稍微調暗一點點，讓閱讀更舒適 */
         }
 
+        /* 圖片設定：模擬截圖中的展示方式 */
+        .story-image-container {
+            margin-top: 40px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .story-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 4px; /* 微小的圓角，增加質感 */
+            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1); /* 淡淡的白色光暈 */
+        }
+
+        /* 腳步空間：防止圖片貼到底部 */
         footer {
-            text-align: center;
-            padding: 40px;
-            font-size: 0.8rem;
-            color: #999;
+            height: 50px;
         }
 
-        /* 響應式調整 */
+        /* 響應式調整：在小螢幕手機上縮小標題字體 */
         @media (max-width: 600px) {
-            main { margin-top: 0; padding: 30px 20px; }
-            header h1 { font-size: 1.8rem; }
+            h1 { font-size: 1.6rem; }
+            header { padding: 15px; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>致 那些旋律中的故事</h1>
-        <p>「當歌聲響起，時間便不再流逝。」</p>
-    </header>
+        <div class="logo">YOOKA</div>
+        <div class="menu-icon">&#9776;</div> </header>
 
     <main>
-        <div class="story-section">
-            <h2>第一章：聚光燈外的影</h2>
-            <p>
-                這是你的故事起始點... 
-                （請將你在原網頁中的故事內容貼在這裡）
-                文字可以帶一點留白，讓讀者在閱讀時能感受到節奏感。
-            </p>
-        </div>
+        <h1>嗨，歡迎您的到來</h1>
 
-        <div class="quote">
-            「每一段旋律，都是靈魂的私語。」
-        </div>
+        <p>這是我以tuki.的歌曲</p>
+        <p>〔地獄恋文〕所創作的故事。</p>
 
-        <div class="story-section">
-            <h2>第二章：未完成的歌</h2>
-            <p>
-                你可以在這裡繼續描述關於歌手的委託內容或故事細節。
-                如果需要放圖片，我可以幫你加入相應的代碼。
-            </p>
-        </div>
+        <p>姑且是個二次創作的小作品</p>
+        <p>總之希望會喜歡！</p>
 
-        <div class="btn-container">
-            <a href="mailto:your-email@example.com" class="btn">聯繫創作者</a>
+        <div class="story-image-container">
+            <img src="https://image-service.webnode.com/v2/imagestory/2.cms.webnode.page/7b6f6580-ff67-4e6f-9989-b02f5a6f235d/tuki.%E5%9C%B0%E7%8D%84%E6%81%8B%E6%96%87.jpeg?ws=normal&ver=1" alt="地獄恋文故事插圖" class="story-image">
         </div>
     </main>
 
-    <footer>
-        &copy; 2024 故事委託製作集 | 即使星光微弱，依然值得被聽見
-    </footer>
+    <footer></footer>
 
 </body>
 </html>
