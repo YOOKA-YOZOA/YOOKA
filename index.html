@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>給那位歌手的信箋 - 故事集</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #d4af37; /* 金色，代表星光或舞台 */
+            --bg-color: #fcfaf7;    /* 略帶紙質感的米白色 */
+            --text-color: #333;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: "PingFang TC", "Microsoft JhengHei", serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        /* 頂部視覺區 */
+        header {
+            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1514525253361-b83a85f08a83?auto=format&fit=crop&q=80&w=1920') center/cover;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        header p {
+            font-style: italic;
+            opacity: 0.8;
+        }
+
+        /* 主要內容區 */
+        main {
+            max-width: 800px;
+            margin: -50px auto 50px;
+            background: white;
+            padding: 60px 40px;
+            border-radius: 4px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .story-section {
+            margin-bottom: 40px;
+            white-space: pre-wrap; /* 保留換行，像讀詩一樣 */
+        }
+
+        .story-section h2 {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            border-left: 3px solid var(--accent-color);
+            padding-left: 15px;
+        }
+
+        .quote {
+            font-size: 1.2rem;
+            color: #666;
+            text-align: center;
+            margin: 40px 0;
+            padding: 20px;
+            border-top: 1px solid #eee;
+            border-bottom: 1px solid #eee;
+            font-style: italic;
+        }
+
+        /* 互動按鈕 */
+        .btn-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border: 1px solid var(--accent-color);
+            color: var(--accent-color);
+            text-decoration: none;
+            transition: all 0.3s;
+            letter-spacing: 2px;
+        }
+
+        .btn:hover {
+            background: var(--accent-color);
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.8rem;
+            color: #999;
+        }
+
+        /* 響應式調整 */
+        @media (max-width: 600px) {
+            main { margin-top: 0; padding: 30px 20px; }
+            header h1 { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>致 那些旋律中的故事</h1>
+        <p>「當歌聲響起，時間便不再流逝。」</p>
+    </header>
+
+    <main>
+        <div class="story-section">
+            <h2>第一章：聚光燈外的影</h2>
+            <p>
+                這是你的故事起始點... 
+                （請將你在原網頁中的故事內容貼在這裡）
+                文字可以帶一點留白，讓讀者在閱讀時能感受到節奏感。
+            </p>
+        </div>
+
+        <div class="quote">
+            「每一段旋律，都是靈魂的私語。」
+        </div>
+
+        <div class="story-section">
+            <h2>第二章：未完成的歌</h2>
+            <p>
+                你可以在這裡繼續描述關於歌手的委託內容或故事細節。
+                如果需要放圖片，我可以幫你加入相應的代碼。
+            </p>
+        </div>
+
+        <div class="btn-container">
+            <a href="mailto:your-email@example.com" class="btn">聯繫創作者</a>
+        </div>
+    </main>
+
+    <footer>
+        &copy; 2024 故事委託製作集 | 即使星光微弱，依然值得被聽見
+    </footer>
+
+</body>
+</html>
