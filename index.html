@@ -5,13 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>地獄恋文故事集</title>
     <style>
-        /* 1. 設定整體背景圖片 */
+        /*背景設定*/
         body {
             background-image: url('bg.jpg.jpg');
             background-size: cover;    
             background-position: center; 
             background-attachment: fixed; 
-            background-repeat: no-repeat; 
+            background-color: #000; /* 備用黑色 */
             color: #ffffff;
             font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
             margin: 0;
@@ -21,22 +21,23 @@
             align-items: center;
         }
 
-        /* 上方導覽列 - 也加上一點半透明背景 */
+         /* 導覽列 */
         header {
-            width: 100%;
-            padding: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-sizing: border-box;
-            background: rgba(0, 0, 0, 0.4); /* 40% 透明度的黑色 */
-            position: fixed; /* 固定在上方 */
-            top: 0;
-            z-index: 1000;
+            width: 100%; padding: 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            box-sizing: border-box; background: rgba(0, 0, 0, 0.4);
+            position: fixed; top: 0; z-index: 1000;
         }
 
         .logo { font-size: 1.4rem; font-weight: bold; letter-spacing: 2px; }
-        .menu-icon { font-size: 1.6rem; }
+        .menu-icon { font-size: 1.6rem; cursor: pointer; }
+
+        /* 彩蛋對話框樣式 */
+        #egg-text {
+            display: none; position: absolute; right: 20px; top: 70px;
+            background: rgba(255, 255, 255, 0.9); color: #333;
+            padding: 10px 15px; border-radius: 8px; font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3); z-index: 1001;
 
         /* 內容容器 - 增加上方邊距以容納固定的導覽列 */
         main {
@@ -80,46 +81,25 @@
         }
 
         /* ========================================================
-             故事段落區樣式
-             ======================================================== */
+             /* 故事段落 */
         .story-section {
-            background-color: rgba(0, 0, 0, 0.65); /* 稍微淡一點的透明色塊 */
-            text-align: left;
-            line-height: 2.1;
-            font-size: 1.05rem;
-            margin-bottom: 60px;
-            white-space: pre-wrap;
-            color: #eee;
-            padding: 40px;
-            border-radius: 8px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            background-color: rgba(0, 0, 0, 0.65);
+            text-align: left; line-height: 2.1; padding: 40px;
+            margin-bottom: 60px; border-radius: 8px; white-space: pre-wrap;
         }
 
-        .section-title {
-            color: #d4af37; /* 金色段落標題 */
-            font-size: 1.3rem;
-            margin-bottom: 25px;
-            text-align: center;
-            font-weight: bold;
-        }
+        .section-title { color: #d4af37; font-size: 1.3rem; margin-bottom: 20px; text-align: center; }
 
         footer { padding: 50px; opacity: 0.3; font-size: 0.8rem; }
-
-        /* 響應式調整 */
-        @media (max-width: 600px) {
-            h1 { font-size: 1.8rem; }
-            .text-overlay-block { padding: 25px; }
-            .story-section { padding: 25px; }
-        }
     </style>
 </head>
 <body>
 
+
     <header>
          <div class="logo">在地獄來臨前，我們相互吸引</div>
     <div class="menu-icon" onclick="toggleEgg()">&#9776;</div>
-    <div id="egg-text">其實我只是想專業點才有這個漢堡選單的 (〃▽〃)
-    </div>
+    <div id="egg-text">其實我只是想專業點才有這個漢堡選單的 (〃▽〃) </div>
 </header>
 
     <main>
@@ -327,7 +307,7 @@
     </main>
 
     <footer>
-       &copy; 2026 在地獄來臨前，我們相互吸引 | YOOKA Story Collection.
+       <span style="color: #d4af37;">致 那些旋律中的靈魂</span> | Story by YOOKA-在地獄來臨前，我們相互吸引 | Inspired by tuki.〔地獄恋文〕
     </footer>
 
     </script>
@@ -335,7 +315,6 @@
     var x = document.getElementById("egg-text");
     if (x.style.display === "none") {
         x.style.display = "block";
-        // 3秒後自動消失
         setTimeout(function(){ x.style.display = "none"; }, 3000);
     } else {
         x.style.display = "none";
