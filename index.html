@@ -334,3 +334,14 @@
 
 </body>
 </html>
+function toggleEgg() {
+    var x = document.getElementById("egg-text");
+    if (x.style.display === "none") {
+        x.style.display = "block";
+        // 3秒後自動消失
+        setTimeout(function(){ x.style.display = "none"; }, 3000);
+    } else {
+        x.style.display = "none";
+    }
+}
+</script>
