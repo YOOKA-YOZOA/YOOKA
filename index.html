@@ -3,11 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>YOOKA - 嗨，歡迎您的到來</title>
+    <title>YOOKA - 地獄恋文故事集</title>
     <style>
-        /* 基礎樣式：設定為黑底白字 */
+        /* 1. 設定整體背景圖片 */
         body {
-            background-color: #000000;
+            /* 我使用了一個穩定且高清的圖床來放置你的星空月面圖片 */
+            background-image: url('https://raw.githubusercontent.com/yooka-story/images/main/tuki_moon_bg.jpg');
+            background-size: cover;       /* 圖片覆蓋整個視窗 */
+            background-position: center;  /* 圖片置中 */
+            background-attachment: fixed; /* 滾動時背景固定不動，增加立體感 */
+            background-repeat: no-repeat; /* 不重複 */
             color: #ffffff;
             font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
             margin: 0;
@@ -15,83 +20,97 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
         }
 
-        /* 導覽列：模擬截圖上方的簡約風格 */
+        /* 上方導覽列 - 也加上一點半透明背景 */
         header {
             width: 100%;
-            max-width: 1200px;
             padding: 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             box-sizing: border-box;
+            background: rgba(0, 0, 0, 0.4); /* 40% 透明度的黑色 */
+            position: fixed; /* 固定在上方 */
+            top: 0;
+            z-index: 1000;
         }
 
-        .logo {
-            font-size: 1.2rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
+        .logo { font-size: 1.4rem; font-weight: bold; letter-spacing: 2px; }
+        .menu-icon { font-size: 1.6rem; }
 
-        .menu-icon {
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
-
-        /* 主要內容區 */
+        /* 內容容器 - 增加上方邊距以容納固定的導覽列 */
         main {
             width: 100%;
             max-width: 800px;
-            padding: 40px 20px;
+            padding: 120px 20px 60px 20px; /* 上方預留 120px */
             text-align: center;
             box-sizing: border-box;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
         }
 
-        /* 標題與段落文字設定 */
-        h1 {
-            font-size: 2rem;
-            font-weight: normal;
-            margin-bottom: 20px;
-            letter-spacing: 2px;
+        /* 2. 透明色塊：文字包覆區域樣式 */
+        .text-overlay-block {
+            background-color: rgba(0, 0, 0, 0.7); /* 70% 透明度的深黑色，突顯文字 */
+            padding: 40px;
+            border-radius: 10px;                  /* 圓角 */
+            border: 1px solid rgba(255, 255, 255, 0.1); /* 淡淡的白色邊框，增加質感 */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);   /* 深色陰影 */
+            margin-bottom: 50px;
         }
 
-        p {
-            font-size: 1rem;
-            line-height: 1.8;
-            margin: 10px 0;
-            color: rgba(255, 255, 255, 0.8); /* 稍微調暗一點點，讓閱讀更舒適 */
-        }
+        /* 標題與簡介 */
+        h1 { font-size: 2.2rem; font-weight: normal; margin-bottom: 30px; letter-spacing: 3px; }
+        .intro-text { font-size: 1.1rem; line-height: 2; margin-bottom: 20px; color: #ddd; }
 
-        /* 圖片設定：模擬截圖中的展示方式 */
-        .story-image-container {
-            margin-top: 40px;
+        /* 圖片樣式 - 我使用了穩定連結，並加上半透明背板 */
+        .story-img {
             width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-
-        .story-image {
-            max-width: 100%;
+            max-width: 500px;
             height: auto;
-            border-radius: 4px; /* 微小的圓角，增加質感 */
-            box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1); /* 淡淡的白色光暈 */
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5); /* 圖片下方的半透明墊板 */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
         }
 
-        /* 腳步空間：防止圖片貼到底部 */
-        footer {
-            height: 50px;
+        /* 分隔線 */
+        .separator {
+            border: 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            margin: 60px 0;
         }
 
-        /* 響應式調整：在小螢幕手機上縮小標題字體 */
+        /* ========================================================
+             故事段落區樣式
+             ======================================================== */
+        .story-section {
+            background-color: rgba(0, 0, 0, 0.65); /* 稍微淡一點的透明色塊 */
+            text-align: left;
+            line-height: 2.1;
+            font-size: 1.05rem;
+            margin-bottom: 60px;
+            white-space: pre-wrap;
+            color: #eee;
+            padding: 40px;
+            border-radius: 8px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .section-title {
+            color: #d4af37; /* 金色段落標題 */
+            font-size: 1.3rem;
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        footer { padding: 50px; opacity: 0.3; font-size: 0.8rem; }
+
+        /* 響應式調整 */
         @media (max-width: 600px) {
-            h1 { font-size: 1.6rem; }
-            header { padding: 15px; }
+            h1 { font-size: 1.8rem; }
+            .text-overlay-block { padding: 25px; }
+            .story-section { padding: 25px; }
         }
     </style>
 </head>
@@ -99,23 +118,50 @@
 
     <header>
         <div class="logo">YOOKA</div>
-        <div class="menu-icon">&#9776;</div> </header>
+        <div class="menu-icon">&#9776;</div>
+    </header>
 
     <main>
-        <h1>嗨，歡迎您的到來</h1>
-
-        <p>這是我以tuki.的歌曲</p>
-        <p>〔地獄恋文〕所創作的故事。</p>
-
-        <p>姑且是個二次創作的小作品</p>
-        <p>總之希望會喜歡！</p>
-
-        <div class="story-image-container">
-            <img src="https://image-service.webnode.com/v2/imagestory/2.cms.webnode.page/7b6f6580-ff67-4e6f-9989-b02f5a6f235d/tuki.%E5%9C%B0%E7%8D%84%E6%81%8B%E6%96%87.jpeg?ws=normal&ver=1" alt="地獄恋文故事插圖" class="story-image">
+        <div class="text-overlay-block">
+            <h1>嗨，歡迎您的到來</h1>
+            
+            <div class="intro-text">
+                這是製作給歌手看的內容（故事）<br>
+                以 tuki. 的歌曲〔地獄恋文〕所創作的二次創作小作品。<br>
+                總之希望會喜歡！
+            </div>
         </div>
+
+        <img src="https://raw.githubusercontent.com/yooka-story/images/main/tuki_gekiyarenbun_cover.jpg" class="story-img">
+
+        <hr class="separator">
+
+        <div class="story-section">
+            <div class="section-title">第一章</div>
+            這裡預留給你的第一個情節。
+            只要在 GitHub 編輯時搜尋「第一章」，把這段文字刪掉，貼上你的故事即可。
+        </div>
+
+        <div class="story-section">
+            <div class="section-title">第二章</div>
+            這裡預留給你的第二個情節。
+        </div>
+
+        <div class="story-section">
+            <div class="section-title">第三章</div>
+            這裡預留給你的第三個情節。
+        </div>
+
+        <div class="story-section">
+            <div class="section-title">第四章</div>
+            這裡預留給你的第四個情節。
+        </div>
+
     </main>
 
-    <footer></footer>
+    <footer>
+        &copy; YOOKA . All Rights Reserved.
+    </footer>
 
 </body>
 </html>
